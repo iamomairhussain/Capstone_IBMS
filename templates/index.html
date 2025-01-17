@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battery Data</title>
+   <style>
+    .heading{
+        font-size: 50px;
+    }
+    body { 
+        font-family: 'Times New Roman', Times, serif, sans-serif; 
+        background-image: url('https://content.jdmagicbox.com/comp/bangalore/t8/080pxx80.xx80.190720191721.y9t8/catalogue/presidency-university-dibbur-bangalore-universities-iqwqb77mm1.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100vh;
+        width: 100vw;
+        
+         
+}
+    nav{display: flex; height: 100px; background-color: black;color: white ; justify-content: center; align-items: center;}
+    nav h1{text-align: center;}
+    .container{display: flex; 
+        /* background-color: black; */
+        color: rgb(21, 20, 20); 
+        margin: 23px auto;
+        width: 70%;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    /* .container table { width: 70%; border-collapse: collapse; justify-content: center;} */
+    .container table.th, td { border: 1px solid #ddd; text-align: center; margin: 12px;}
+  
+   </style>
+</head>
+<body>
+    <div>
+        <nav>
+    <h1  class="heading">Battery Management Data</h1>
+        </nav>
+    {% if data %}
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>State of Charge (SoC)</th>
+                    <th>State of Health (SoH)</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        <td>{{ row.soc }}</td>
+                        <td>{{ row.soh }}</td>
+                        <td>{{ row.timestamp }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+    {% else %}
+        <p>No battery data available.</p>
+    {% endif %}
+</body>
+</html>
